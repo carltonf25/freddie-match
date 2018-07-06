@@ -16,7 +16,7 @@ class MemoryCard extends Component {
           </div>
           <div className="MemoryCardFront">
             {console.log(this.props.symbol)}
-            {this.props.symbol}
+            <img class="freddieImg" src={this.props.symbol} />
           </div>
         </div>
       </div>

@@ -8,15 +8,24 @@
 
 .App-header {
   background-color: rgb(68, 92, 128);
-  height: 80px;
+  height: 110px;
   padding: 20px;
   color: #fff;
   margin-bottom: 50px;
-  box-shadow: 
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+}
+
+.titleImg {
+  margin: 0px 7px -10px 6px;
+}
+
+.titleImg img {
+  width: 40px;
 }
 
 .App-subtitle {

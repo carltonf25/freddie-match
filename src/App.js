@@ -3,11 +3,12 @@ import MemoryCard from './MemoryCard.js';
 import './App.css';
 
 const generateDeck = () => {
-    let symbols = [ '∆', 'ß', '£', '§', '•', '$', '+', 'ø' ];
+    let freddieImgs = [ 'freddie1.jpg', 'freddie2.jpg', 'freddie3.jpg', 'freddie4.jpg',
+     'freddie5.jpg', 'freddie6.jpg', 'freddie7.jpg', 'freddie8.jpg' ];
     let deck = [];
 
     for (let i=0; i<16; i++) {
-      deck.push({ isFlipped: false, symbol: symbols[i % 8] }); 
+      deck.push({ isFlipped: false, symbol: freddieImgs[i % 8] }); 
     }
     shuffle(deck);
     return deck;
@@ -48,7 +49,7 @@ class App extends Component {
         return card;
       }
     });
-    this.setState({ deck: newDeck }); 
+    this.setState({ deck: newDeck });
   }
 
   pickCard(cardIndex) {
@@ -79,7 +80,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Freddie Match</h1>
+          <h1 className="App-title">Freddie<span className="titleImg"><img src="favicon.ico" /></span>Match</h1>
           <h3 className="App-subtitle">Match cards to win</h3>
         </header>
         <div>

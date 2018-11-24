@@ -30,7 +30,9 @@ class App extends Component {
     super();
     this.state = { 
       deck: generateDeck(),
-      pickedCards: []
+      pickedCards: [],
+      score: 0,
+      misses: 0
      }; 
   }
 
@@ -67,22 +69,66 @@ class App extends Component {
       let card2Index = newPickedCards[1];
       if (newDeck[card1Index].symbol !== newDeck[card2Index].symbol) {
         setTimeout(this.unflipCards.bind(this, card1Index, card2Index), 1000); 
+        this.incrementMisses();
+      } else {
+        this.incrementScore();
       }
       newPickedCards = []; 
     }
     this.setState({ deck: newDeck, pickedCards: newPickedCards });
   }
 
+  incrementScore() {
+      this.setState((prevState, props) => {
+          return { score: prevState.score + 1 };
+      })
+  }
+
+  incrementMisses() {
+    this.setState((prevState, props) => {
+      return { misses: prevState.misses + 1 };
+    });
+  }
+
+  checkForWinOrLoss() {
+    if (this.state.score === 8) {
+      this.showWinModal();
+    } else if (this.state.misses === 10) {
+      this.showLoseModal();
+    }   
+  }
+
+  tryAgain() {
+    this.setState({
+      score: 0,
+      misses: 0,
+      deck: generateDeck()
+    })
+  }
+
   render() {
     let cardsJSX = this.state.deck.map((card, index) => {
-      return <MemoryCard key={index} symbol={card.symbol} isFlipped={card.isFlipped} pickCard={this.pickCard.bind(this, index)} />
-    })
+      return <MemoryCard key={index} symbol={card.symbol} isFlipped={card.isFlipped} pickCard={this.pickCard.bind(this, index)} />;
+      });
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Freddie<span className="titleImg"><img src="favicon.ico" /></span>Match</h1>
           <h3 className="App-subtitle">Match cards to win</h3>
         </header>
+        {this.state.misses >= 10 
+        ? <div>
+            <p>Dang, you lost. But, you'll live to bork again!</p> 
+            <button onClick={this.tryAgain.bind(this)}>Try Again</button>
+          </div>
+        :  
+        <div className="scoreBoard">
+            <section>
+            <h2>Misses</h2>
+            <span>{this.state.misses} / 10</span>
+            </section> 
+        </div>
+        }
         <div>
           { cardsJSX.slice(0,4) }
         </div>

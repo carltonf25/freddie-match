@@ -11,26 +11,29 @@
   height: 110px;
   padding: 20px;
   color: #fff;
-  margin-bottom: 50px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 
 }
 
 .App-title {
   font-size: 2em;
+  width: 400px;
+  margin: 0 auto;
 }
 
 .titleImg {
-  margin: 0px 7px -10px 6px;
+  margin:  0px;
 }
 
 .titleImg img {
-  width: 40px;
+  width: 80px;
+  margin-top: -15px;
 }
 
 .App-subtitle {
   font-size: 1.2em;
   color: #fff;
+  margin-bottom: 15px;
 }
 
 .App-intro {

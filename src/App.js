@@ -117,10 +117,11 @@ class App extends Component {
           <h3 className="App-subtitle">Match cards to win</h3>
         </header>
         {this.state.misses >= 10 
-        ? <div>
-            <p>Dang, you lost. But, you'll live to bork again!</p> 
+        ? 
+        <div>
+            <p>Dang, you lost. But, you'll live to bork another day!</p> 
             <button onClick={this.tryAgain.bind(this)}>Try Again</button>
-          </div>
+        </div>
         :  
         <div className="scoreBoard">
             <section>
